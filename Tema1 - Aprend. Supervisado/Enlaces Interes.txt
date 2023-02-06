@@ -1,0 +1,2 @@
+-Regresion Lineal / Gradiante Descendiente
+https://www.codificandobits.com/blog/regresion-lineal/#la-regresi%C3%B3n-lineal-y-el-gradiente-descendente
