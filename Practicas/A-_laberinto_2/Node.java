@@ -35,7 +35,7 @@ public class Node implements Comparable<Node>{
         return f;
     }
 
-    public void newCost(int c){
+    public void newCost(int c){ //nuevo coste de la funcion heuristica
         cost = c;
         f = manhattan + cost;
     }

@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Laberinto {
 
-    static final int ROWS = 60;
-    static final int COLS = 80;
-    static final double OBS = 0.3;  //Probabilidad de obstaculo
+    private int ROWS = 60;
+    private int COLS = 80;
+    static final double OBS = 0.3; // Probabilidad de obstaculo
     private final char[][] maze;
     private int startRow;
     private int startCol;
@@ -14,8 +14,15 @@ public class Laberinto {
     private int endCol;
     private boolean solution;
 
-
     public Laberinto() {
+        maze = new char[ROWS][COLS];
+        solution = false;
+        initializeMaze(maze);
+    }
+
+    public Laberinto(int ROWS, int COLS) {
+        this.ROWS = ROWS;
+        this.COLS = COLS;
         maze = new char[ROWS][COLS];
         solution = false;
         initializeMaze(maze);
@@ -23,18 +30,19 @@ public class Laberinto {
 
     private void initializeMaze(char[][] lab) {
 
-        //Obstacles
-        int numObstacles = (int) (ROWS*COLS*OBS);                   //numero de obstaculos que tiene que haber en el tablero
+        // Obstacles
+        int numObstacles = (int) (ROWS * COLS * OBS); // numero de obstaculos que tiene que haber en el tablero
         int prob = 0;
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLS; j++) {
-                if(numObstacles == (COLS-j-1)+(ROWS-i-1)*COLS){     //si el numero de obstaculos es igual al de casillas restantes
-                    lab[i][j] = '*';                                //rellenamos con obstaculos
+                if (numObstacles == (COLS - j - 1) + (ROWS - i - 1) * COLS) { // si el numero de obstaculos es igual al
+                                                                              // de casillas restantes
+                    lab[i][j] = '*'; // rellenamos con obstaculos
                     numObstacles--;
-                }else if(numObstacles == 0){                        //si el numero de obstaculos es 0
-                    lab[i][j] = ' ';                                //rellenamos con huecos
+                } else if (numObstacles == 0) { // si el numero de obstaculos es 0
+                    lab[i][j] = ' '; // rellenamos con huecos
                 } else {
-                    prob = (int) (Math.random() * (101));           //Random number between 0 and 100
+                    prob = (int) (Math.random() * (101)); // Random number between 0 and 100
                     if (prob <= OBS * 100) {
                         lab[i][j] = '*';
                         numObstacles--;
@@ -45,23 +53,23 @@ public class Laberinto {
             }
         }
 
-        //Initial state
+        // Initial state
 
-        int randRow = (int) (Math.floor(Math.random()*ROWS));
-        int randCol = (int) (Math.floor(Math.random()*COLS));
-        while (lab[randRow][randCol] == '*'){                       //hay que checkear que no sea un obstaculo
-            randRow = (int) (Math.floor(Math.random()*ROWS));
-            randCol = (int) (Math.floor(Math.random()*COLS));
+        int randRow = (int) (Math.floor(Math.random() * ROWS));
+        int randCol = (int) (Math.floor(Math.random() * COLS));
+        while (lab[randRow][randCol] == '*') { // hay que checkear que no sea un obstaculo
+            randRow = (int) (Math.floor(Math.random() * ROWS));
+            randCol = (int) (Math.floor(Math.random() * COLS));
         }
         lab[randRow][randCol] = 'I';
         startCol = randCol;
         startRow = randRow;
 
-        //Final state
+        // Final state
 
-        do  {
-            randRow = (int) (Math.floor(Math.random()*ROWS));
-            randCol = (int) (Math.floor(Math.random()*COLS));
+        do {
+            randRow = (int) (Math.floor(Math.random() * ROWS));
+            randCol = (int) (Math.floor(Math.random() * COLS));
         } while (lab[randRow][randCol] == 'I' || lab[randRow][randCol] == '*');
         endRow = randRow;
         endCol = randCol;
@@ -70,62 +78,63 @@ public class Laberinto {
     }
 
     public void solve() {
-        Node initial =new Node(startCol,startRow,0,manhattanToEnd(startRow,startRow), null);
+        Node initial = new Node(startCol, startRow, 0, manhattanToEnd(startRow, startRow), null);
         ArrayList<Node> closedset = new ArrayList<>();
         SortedSet<Node> openset = new TreeSet<>();
         openset.add(initial);
         Map<Node, Integer> g = new HashMap<>();
         g.put(initial, 0);
 
-        while(!openset.isEmpty()){
+        while (!openset.isEmpty()) {
             Node current = openset.first();
-            if(isGoal(current)){
+            if (isGoal(current)) {
                 constructPath(current);
                 solution = true;
                 return;
             }
             openset.remove(current);
             closedset.add(current);
-            for(Node neighbor : neighborNodes(current)){
-                if(!closedset.contains(neighbor)){
+            for (Node neighbor : neighborNodes(current)) {
+                if (!closedset.contains(neighbor)) {
                     int tentativeG = g.get(current) + 1;
-                    if(!openset.contains(neighbor) || tentativeG < g.get(neighbor)){
-                        g.put(neighbor,tentativeG);
+                    if (!openset.contains(neighbor) || tentativeG < g.get(neighbor)) {
+                        g.put(neighbor, tentativeG);
                         openset.add(neighbor);
                     }
                 }
             }
         }
     }
+
     private boolean isGoal(Node n) {
         return n.row() == endRow && n.col() == endCol;
     }
-    private List<Node> neighborNodes(Node current){
+
+    private List<Node> neighborNodes(Node current) {
         List<Node> neighbors = new ArrayList<>();
 
         int row = current.row();
         int col = current.col();
 
-        if (col < COLS-1 && maze[row][col+1] != '*' && maze[row][col+1] != 'I'){
-            neighbors.add(new Node(col+1, row, current.cost()+1, manhattanToEnd(row, col+1), current));
+        if (col < COLS - 1 && maze[row][col + 1] != '*' && maze[row][col + 1] != 'I') {
+            neighbors.add(new Node(col + 1, row, current.cost() + 1, manhattanToEnd(row, col + 1), current));
         }
-        if (col > 0 && maze[row][col-1] != '*' && maze[row][col-1] != 'I'){
-            neighbors.add(new Node(col-1, row, current.cost()+1, manhattanToEnd(row, col-1), current));
+        if (col > 0 && maze[row][col - 1] != '*' && maze[row][col - 1] != 'I') {
+            neighbors.add(new Node(col - 1, row, current.cost() + 1, manhattanToEnd(row, col - 1), current));
         }
-        if (row < ROWS-1 && maze[row+1][col] != '*' && maze[row+1][col] != 'I'){
-            neighbors.add(new Node(col, row+1, current.cost()+1, manhattanToEnd(row+1, col), current));
+        if (row < ROWS - 1 && maze[row + 1][col] != '*' && maze[row + 1][col] != 'I') {
+            neighbors.add(new Node(col, row + 1, current.cost() + 1, manhattanToEnd(row + 1, col), current));
         }
-        if (row > 0 && maze[row-1][col] != '*'&& maze[row-1][col] != 'I'){
-            neighbors.add(new Node(col, row-1, current.cost()+1, manhattanToEnd(row-1, col), current));
+        if (row > 0 && maze[row - 1][col] != '*' && maze[row - 1][col] != 'I') {
+            neighbors.add(new Node(col, row - 1, current.cost() + 1, manhattanToEnd(row - 1, col), current));
         }
 
         return neighbors;
     }
 
+    private void constructPath(Node n) {
 
-    private void constructPath(Node n){
-
-        while(n.parent() != null) {
+        while (n.parent() != null) {
             n = n.parent();
             maze[n.row()][n.col()] = '+';
         }
@@ -159,9 +168,9 @@ public class Laberinto {
                 }
                 pw.println();
             }
-            if(solution){
+            if (solution) {
                 pw.println("SOLUTION FOUND");
-            } else{
+            } else {
                 pw.println("SOLUTION NOT FOUND");
             }
             pw.close();
