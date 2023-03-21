@@ -1,1 +1,1 @@
-A* maze, implemented with Priority Queue
+A* maze, implemented with Priority Queue.
