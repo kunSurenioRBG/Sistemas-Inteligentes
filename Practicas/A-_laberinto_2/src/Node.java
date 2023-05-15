@@ -30,26 +30,8 @@ public class Node implements Comparable<Node>{
     public int manhattan(){
         return manhattan;
     }
-    public Node parent(){return parent;}
-    public int f(){
-        return f;
-    }
-
-    public void newCost(int c){ //nuevo coste de la funcion heuristica
-        cost = c;
-        f = manhattan + cost;
-    }
-
-    public void newManhattan(int m){
-        manhattan = m;
-        f = manhattan + cost;
-    }
-
-    public void newF(int c, int m){
-        cost = c;
-        manhattan = m;
-        f = manhattan + cost;
-    }
+    public Node parent(){
+        return parent;}
 
     @Override
     public int hashCode(){
