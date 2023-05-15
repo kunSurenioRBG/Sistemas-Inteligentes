@@ -1,3 +1,5 @@
+package Practicas.AStar_laberinto_1;
+
 import java.util.*;
 
 public class Astar{

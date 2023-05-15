@@ -1,3 +1,5 @@
+package Practicas.AStar_laberinto_2;
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;

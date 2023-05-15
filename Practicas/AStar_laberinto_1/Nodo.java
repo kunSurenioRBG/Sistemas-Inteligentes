@@ -1,3 +1,5 @@
+package Practicas.AStar_laberinto_1;
+
 public class Nodo implements Comparable<Nodo>{
     private int corX;
     private int corY;

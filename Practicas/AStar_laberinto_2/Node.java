@@ -1,3 +1,5 @@
+package Practicas.AStar_laberinto_2;
+
 public class Node implements Comparable<Node>{
     private int col;
     private int row;
