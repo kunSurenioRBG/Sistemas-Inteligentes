@@ -1,0 +1,34 @@
+Epoca #0 - Error entrenamiento: 0.014774703090910694 - Error validacion: 0.005119785492951512
+Epoca #1 - Error entrenamiento: 0.0051728283849114005 - Error validacion: 0.0025978707340037505
+Epoca #2 - Error entrenamiento: 0.0020516109544197044 - Error validacion: 0.0016784995869430573
+Epoca #3 - Error entrenamiento: 0.001089920331912785 - Error validacion: 0.0012591181527794708
+Epoca #4 - Error entrenamiento: 7.264836171004497E-4 - Error validacion: 0.0010476241261421625
+Epoca #5 - Error entrenamiento: 5.585955566406206E-4 - Error validacion: 9.374121684836189E-4
+Epoca #6 - Error entrenamiento: 4.730807617943295E-4 - Error validacion: 8.799068438282723E-4
+Epoca #7 - Error entrenamiento: 4.2778152426186023E-4 - Error validacion: 8.50382499131249E-4
+Epoca #8 - Error entrenamiento: 4.0348237070291865E-4 - Error validacion: 8.356659982933931E-4
+Epoca #9 - Error entrenamiento: 3.9043399662585235E-4 - Error validacion: 8.286623135891436E-4
+Epoca #10 - Error entrenamiento: 3.834501741765515E-4 - Error validacion: 8.255761326022696E-4
+Epoca #11 - Error entrenamiento: 3.7972826665011835E-4 - Error validacion: 8.244095007754308E-4
+Epoca #12 - Error entrenamiento: 3.7775207950071127E-4 - Error validacion: 8.241336044363874E-4
+Epoca #13 - Error entrenamiento: 3.7670518462367254E-4 - Error validacion: 8.242337324604025E-4
+Epoca #14 - Error entrenamiento: 3.7615065800792436E-4 - Error validacion: 8.2446251197855E-4
+Epoca #15 - Error entrenamiento: 3.7585603135917653E-4 - Error validacion: 8.247082987911578E-4
+Epoca #16 - Error entrenamiento: 3.7569821552494196E-4 - Error validacion: 8.249262577437339E-4
+Epoca #17 - Error entrenamiento: 3.7561227900489346E-4 - Error validacion: 8.251030006822728E-4
+Epoca #18 - Error entrenamiento: 3.75564062196098E-4 - Error validacion: 8.252388847266183E-4
+Epoca #19 - Error entrenamiento: 3.755356273688421E-4 - Error validacion: 8.253394414180088E-4
+Epoca #20 - Error entrenamiento: 3.7551756581729326E-4 - Error validacion: 8.254114325278907E-4
+Epoca #21 - Error entrenamiento: 3.755049451394053E-4 - Error validacion: 8.254611907763625E-4
+Epoca #22 - Error entrenamiento: 3.7549517964420527E-4 - Error validacion: 8.254940482757519E-4
+Epoca #23 - Error entrenamiento: 3.7548691323422816E-4 - Error validacion: 8.255142529654641E-4
+Epoca #24 - Error entrenamiento: 3.754794340246845E-4 - Error validacion: 8.255250807579343E-4
+Epoca #25 - Error entrenamiento: 3.754723677646374E-4 - Error validacion: 8.255290067602144E-4
+Epoca #26 - Error entrenamiento: 3.754655172920629E-4 - Error validacion: 8.255278760754578E-4
+Epoca #27 - Error entrenamiento: 3.754587784397748E-4 - Error validacion: 8.255230517745083E-4
+Epoca #28 - Error entrenamiento: 3.7545209595918317E-4 - Error validacion: 8.255155346153767E-4
+Epoca #29 - Error entrenamiento: 3.754454403955312E-4 - Error validacion: 8.255060562194559E-4
+
+Set de pruebas:
+
+- Error de prueba: 9.239593539026039E-4
